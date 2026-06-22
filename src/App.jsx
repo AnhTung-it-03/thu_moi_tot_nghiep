@@ -150,8 +150,7 @@ function App() {
           <div className="hero-badge">Kỷ yếu 2026</div>
           <div className="hero-copy">
             <p className="eyebrow" style={{ marginBottom: '10px' }}>Thanh xuân chỉ đến một lần</p>
-            <h1 style={{ fontSize: '45px', height: '45px', fontFamily: 'times new roman' }}>Thư Mời lễ tốt nghiệp</h1>
-        
+            <h1 style={{ fontSize: '45px', height: '75px', fontFamily: 'times new roman'}}>Thư Mời lễ tốt nghiệp</h1>
             <p>
               Gửi bạn một ngày cuối cùng để gom đủ tiếng cười, ánh nhìn và những khoảnh khắc đẹp nhất của tuổi học trò.
             </p>
