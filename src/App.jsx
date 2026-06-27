@@ -7,9 +7,10 @@ const youtubeEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}?start=$
 const googleMapsQuery = encodeURIComponent('Trường Đại học Hồng Đức');
 const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${googleMapsQuery}`;
 const googleMapsEmbedUrl = `https://www.google.com/maps?q=${googleMapsQuery}&z=16&output=embed`;
+const cardSoundUrl = '/sound/sound_hehe.mp3';
 
 const invitationInfo = [
-  { label: 'Thời gian', value: '10:00 sáng Chủ Nhật, ngày 28/06/2026' },
+  { label: 'Thời gian', value: '7:00 - 10:00 sáng Thứ Hai, ngày 29/06/2026' },
   { label: 'Địa điểm', value: 'Sảnh chính trường đại học' },
   { label: 'Dress code', value: 'Thanh lịch, nhẹ nhàng, có thể chụp thật lâu' },
 ];
@@ -20,8 +21,18 @@ function App() {
   const [playerReady, setPlayerReady] = useState(false);
   const playerHostRef = useRef(null);
   const playerRef = useRef(null);
+  const cardAudioRef = useRef(null);
 
   const activeImage = useMemo(() => invitationImages[activeIndex], [activeIndex]);
+
+  useEffect(() => {
+    // Play card sound on page load
+    if (cardAudioRef.current) {
+      cardAudioRef.current.play().catch(() => {
+        // Catch for browsers that block autoplay
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -198,8 +209,8 @@ function App() {
 
           <div className="music-panel">
             <div>
-              <p className="music-label">Nhạc nền YouTube</p>
-              <h2>Thanh Xuân - Da LAB</h2>
+              {/* <p className="music-label">Nhạc nền YouTube</p> */}
+              <h2 style={{ fontSize: '24px', margin: '10px 0' }}>Thanh Xuân - Da LAB</h2>
               <p className="music-meta"></p>
             </div>
 
@@ -216,6 +227,7 @@ function App() {
             </div>
           </div>
 
+          <audio src={cardSoundUrl} ref={cardAudioRef} preload="auto" />
           <div className="hidden-music-frame" aria-hidden="true" ref={playerHostRef} />
 
           <section className="map-panel">
